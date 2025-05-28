@@ -1,31 +1,22 @@
-import { Suspense, lazy } from 'react'
+import { lazy } from 'react'
 import './App.css'
 
 const Auth = lazy(() => import('mf-auth/Auth'))
-const Products = lazy(() => import('mf-products/Products'))
+import ProductsWrapper from './components/ProductsWrapper'
 const Cart = lazy(() => import('mf-cart/Cart'))
 
 function App() {
   return (
-    <div className="container">
-      <header className="header">
-        <h1>Micro Frontend POC</h1>
-        <div className="cart-wrapper">
-          <Suspense fallback="Loading Cart...">
-            <Cart />
-          </Suspense>
-        </div>
+    <div className="app-container">
+      <header>
+        <Auth />
       </header>
-      
-      <main className="main-content">
-        <Suspense fallback="Loading Auth...">
-          <Auth />
-        </Suspense>
-
-        <Suspense fallback="Loading Products...">
-          <Products />
-        </Suspense>
+      <main>
+        <ProductsWrapper />
       </main>
+      <aside>
+        <Cart />
+      </aside>
     </div>
   )
 }

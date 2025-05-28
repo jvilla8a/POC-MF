@@ -10,8 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vue/runtime-core": "^3.5.15",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "vue": "^3.5.15"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",

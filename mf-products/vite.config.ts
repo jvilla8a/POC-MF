@@ -1,34 +1,31 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import vue from '@vitejs/plugin-vue'
 import federation from '@originjs/vite-plugin-federation'
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
-    react(),
+    vue(),
     federation({
       name: 'mf-products',
       filename: 'remoteEntry.js',
       exposes: {
-        './Products': './src/components/Products',
+        './Products': './src/components/Products.vue'
       },
-      shared: ['react', 'react-dom'],
-    }),
+      shared: ['vue']
+    })
   ],
   build: {
     modulePreload: false,
     target: 'esnext',
     minify: false,
-    cssCodeSplit: false,
+    cssCodeSplit: false
   },
   server: {
-    port: 5002,
-    cors: true,
-    strictPort: true,
-    origin: 'http://localhost:5002',
+    port: 5002
   },
   preview: {
     port: 5002,
-    strictPort: true,
-  },
+    strictPort: true
+  }
 })
